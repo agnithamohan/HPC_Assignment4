@@ -51,7 +51,7 @@ void Check_CUDA_Error(const char *message){
 
 int main() {
   const int blockSize = 256, nStreams = 4;
-  long N =   100* blockSize * nStreams;
+  long N =   10000 * blockSize * nStreams;
   const int streamSize = N / nStreams;
   const int streamBytes = streamSize * sizeof(double);
 
@@ -137,7 +137,7 @@ int main() {
 
    /*------Matrix(R*N) Vector Product------*/
   printf("\n\nMatrix-vector multiplication:"); 
-  long R = N; 
+  long R = 100; 
   double *matrix[R]; 
   for (long i=0; i<R; i++) 
     matrix[i] = (double *)malloc(N * sizeof(double)); 
