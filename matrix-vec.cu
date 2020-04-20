@@ -156,7 +156,7 @@ int main() {
  
   time = (omp_get_wtime()-tt);
   printf("\n\nCPU Bandwidth = %f GB/s\n", 3*R*N*sizeof(double) / time/1e9);
-  printf("Time taken on GPU = %f s\n", time);
+  printf("Time taken on CPU = %f s\n", time);
 
   
   tt = omp_get_wtime();  
