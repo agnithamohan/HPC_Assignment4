@@ -1,0 +1,150 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{High Performance Computing}
+\renewcommand\lstlistlistingname{High Performance Computing}
+\def\lstlistingautorefname{HPC}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{High Performance Computing}
+\newcommand\hwnumber{1}                  % <-- homework number
+\newcommand\NetIDa{amr1215}           % <-- NetID of person #1
+\newcommand\NetIDb{Agnitha Mohan Ram}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{Assignment 3}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+	
+
+
+\underline{\textbf{1.Matrix-vector operations on a GPU.}} \\\\
+I was unable to run in on cuda2 and cuda4. 
+Cuda2 was working  initially but when I ran it again, it gave me a segmentation fault for all sizes of matrices and all programs. I'm not sure why that's happening. It was working fine before. \\
+Cuda4 was extremely slow in compiling and running. \\\\
+\underline{Vector-vector multiplication} \\\\
+N = 102400000 \\\\
+\begin{tabular}{ |c|c|c|c|c|c| } 
+ \hline
+ Hostname &Time-CPU&Time-GPU&CPU Bandwidth&GPU Bandwidth&Error \\
+ \hline\hline
+  cuda1.cims.nyu.edu & 0.613801 s & 0.269058 s & 4.003903 GB/s &12.178802 GB/s & 0 \\
+ \hline
+cuda2.cims.nyu.edu &  &  &  & & 0 \\
+\hline
+cuda3.cims.nyu.edu & 2.055223 s & 0.284932 s & 1.195783 GB/s & 11.500284 GB/s & 0 \\
+\hline
+cuda4.cims.nyu.edu &   &   &  &  & 0 \\
+\hline
+cuda5.cims.nyu.edu & 0.683609 s  & 0.268576 s & 3.595040 GB/s & 12.200661 GB/s  & 0 \\
+ \hline
+\end{tabular} \\\\\\
+\underline{Vector-Matrix Muliplication}  \\\\
+Matrix dimensions: 1000 * 102400\\
+Vector dimensions: 102400\\\\
+
+\begin{tabular}{ |c|c|c|c|c|c| } 
+ \hline
+ Hostname &Time-CPU&Time-GPU&CPU Bandwidth&GPU Bandwidth&Error \\
+ \hline\hline
+  cuda1.cims.nyu.edu &5.986337  s &  5.986337  s & 4.105349 GB/s &5.895165 GB/s & 0 \\
+ \hline
+cuda2.cims.nyu.edu &  &  &  & & 0 \\
+\hline
+cuda3.cims.nyu.edu &13.614585  s & 15.311807  s & 1.805123 GB/s & 2.140048 GB/s& 0 \\
+\hline
+cuda4.cims.nyu.edu &   &   &  &  & 0 \\
+\hline
+cuda5.cims.nyu.edu & 4.380782 s   & 5.258230 s& 5.609958 GB/s & 6.231754 GB/s  & 0 \\
+ \hline
+\end{tabular} \\\\\\
+
+\underline{\textbf{2. 2D Jacobi method on a GPU}} \\\\
+
+
+\textbf{This was run on cuda3.cims.nyu.edu. Might not work the same way becuase of imcompatiable compute capabilites. }\\
+
+
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+N &Time taken on CPU&Time taken on GPU&Error \\
+ \hline\hline
+ 1000 & 63.530870 & 2.847677 & 0  \\
+ \hline
+500 & 14.642256 &0.708295 & 0  \\
+\hline
+100 & 0.341087 &  0.082907  & 0  \\
+\hline
+
+\end{tabular} \\\\\\
+
+Norm calculation for max iterations = 1000 \\\\
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+N &Initial Norm & Final Norm  \\
+ \hline\hline
+ 1000 & 998.0000000 &  948.527721  \\
+ \hline
+500 & 498.000000 &  448.527534 \\
+\hline
+100 & 98.000000 &  48.585179  \\
+\hline
+
+\end{tabular} \\\\\\
+\underline{\textbf{3. Update on final projection}} \\\\
+\underline{Completed}
+1. Serial Implementation of the techniques \\
+Completed the serial implementation of the following:\\
+(a) Algorithm by breadth-first search\\ (b) Algorithm by adjacency matrix\\\\
+2. OpenMP Implementation of the techniques \\
+Completed the OpenMP implementations of the mentioned algorithm above. \\
+Achieved a speedup for larger graphs. \\\\
+\underline{Next step:}\\
+1. MPI version for both algorithm and begin Cuda implementation(April 20th - 26th)\\
+
+
+
+
+
+\end{document}
+
+
+
