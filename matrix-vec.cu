@@ -77,7 +77,7 @@ int main() {
   double tt = omp_get_wtime();
   vec_mult(&sum_ref,z_ref, x, y, N);
   double time = (omp_get_wtime()-tt);
-  printf("\nCPU Bandwidth = %f GB/s\n", 3*N*sizeof(double) / time/1e9);
+  printf("\nCPU Bandwidth = %f GB/s\n", (4*N)*sizeof(double) / time/1e9);
   printf("Time taken on CPU = %f s\n", time);
 
 
@@ -155,7 +155,7 @@ int main() {
     vec_mult(&matrix_ref[i],z_ref, x, y, N);
  
   time = (omp_get_wtime()-tt);
-  printf("\n\nCPU Bandwidth = %f GB/s\n", 3*R*N*sizeof(double) / time/1e9);
+  printf("\n\nCPU Bandwidth = %f GB/s\n", 4*R*N*sizeof(double) / time/1e9);
   printf("Time taken on CPU = %f s\n", time);
 
   
