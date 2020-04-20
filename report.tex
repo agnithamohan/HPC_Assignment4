@@ -57,6 +57,9 @@
 
 
 \underline{\textbf{1.Matrix-vector operations on a GPU.}} \\\\
+I have two implementations of matrix vector multiplation. One that uses atomic add(matrix-vec-2) is efficient on cuda2 and cuda3. \\
+
+ 
 I was unable to run in on cuda2 and cuda4. 
 Cuda2 was working  initially but when I ran it again, it gave me a segmentation fault for all sizes of matrices and all programs. I'm not sure why that's happening. It was working fine before. \\
 Cuda4 was extremely slow in compiling and running. \\\\
@@ -96,6 +99,22 @@ cuda4.cims.nyu.edu &   &   &  &  & 0 \\
 cuda5.cims.nyu.edu & 4.380782 s   & 5.258230 s& 5.609958 GB/s & 6.231754 GB/s  & 0 \\
  \hline
 \end{tabular} \\\\\\
+\newpage
+\underline{Implementation 2:}\\\\
+\begin{tabular}{ |c|c|c|c|c|c| } 
+ \hline
+ N &Time-CPU&Time-GPU&CPU Bandwidth&GPU Bandwidth&Error \\
+ \hline\hline
+ 1024 &  0.016126 s &  0.001106 s &1.561062 GB/s &22.761258 GB/s & 0 \\
+ \hline
+ 10240 & 1.779876 s &  0.087909 s &  1.413955 GB/s & 28.627985 GB/s & 0 \\
+\hline
+
+
+\end{tabular} \\\\\\
+
+
+
 
 \underline{\textbf{2. 2D Jacobi method on a GPU}} \\\\
 
@@ -145,6 +164,5 @@ Achieved a speedup for larger graphs. \\\\
 
 
 \end{document}
-
 
 
