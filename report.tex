@@ -57,10 +57,10 @@
 
 
 \underline{\textbf{1.Matrix-vector operations on a GPU.}} \\\\
-I have two implementations of matrix vector multiplation. One that uses atomic add(matrix-vec-2) is efficient on cuda2 and cuda3. \\
+I have two implementations of matrix vector multiplation. One that uses atomic add(matrix-vec-2) which works only on cuda2 and cuda3 because of compute capabilities. My other implementation works on all but doesnt perform that well.\\
 
  
-I was unable to run in on cuda2 and cuda4. 
+I was unable to run it on cuda2 and cuda4. 
 Cuda2 was working  initially but when I ran it again, it gave me a segmentation fault for all sizes of matrices and all programs. I'm not sure why that's happening. It was working fine before. \\
 Cuda4 was extremely slow in compiling and running. \\\\
 \underline{Vector-vector multiplication} \\\\
@@ -69,15 +69,15 @@ N = 102400000 \\\\
  \hline
  Hostname &Time-CPU&Time-GPU&CPU Bandwidth&GPU Bandwidth&Error \\
  \hline\hline
-  cuda1.cims.nyu.edu & 0.613801 s & 0.269058 s & 4.003903 GB/s &12.178802 GB/s & 0 \\
+  cuda1.cims.nyu.edu & 0.613801 s & 0.269058 s &5.338537 GB/s &12.178802 GB/s & 0 \\
  \hline
 cuda2.cims.nyu.edu &  &  &  & & 0 \\
 \hline
-cuda3.cims.nyu.edu & 2.055223 s & 0.284932 s & 1.195783 GB/s & 11.500284 GB/s & 0 \\
+cuda3.cims.nyu.edu & 2.055223 s & 0.284932 s & 1.594377 GB/s & 11.500284 GB/s & 0 \\
 \hline
 cuda4.cims.nyu.edu &   &   &  &  & 0 \\
 \hline
-cuda5.cims.nyu.edu & 0.683609 s  & 0.268576 s & 3.595040 GB/s & 12.200661 GB/s  & 0 \\
+cuda5.cims.nyu.edu & 0.683609 s  & 0.268576 s & 4.793386 GB/s & 12.200661 GB/s  & 0 \\
  \hline
 \end{tabular} \\\\\\
 \underline{Vector-Matrix Muliplication}  \\\\
@@ -88,15 +88,15 @@ Vector dimensions: 102400\\\\
  \hline
  Hostname &Time-CPU&Time-GPU&CPU Bandwidth&GPU Bandwidth&Error \\
  \hline\hline
-  cuda1.cims.nyu.edu &5.986337  s &  5.986337  s & 4.105349 GB/s &5.895165 GB/s & 0 \\
+  cuda1.cims.nyu.edu &5.986337  s &  5.986337  s & 5.473798 &5.895165 GB/s & 0 \\
  \hline
 cuda2.cims.nyu.edu &  &  &  & & 0 \\
 \hline
-cuda3.cims.nyu.edu &13.614585  s & 15.311807  s & 1.805123 GB/s & 2.140048 GB/s& 0 \\
+cuda3.cims.nyu.edu &13.614585  s & 15.311807  s &2.406830 GB/s & 2.140048 GB/s& 0 \\
 \hline
 cuda4.cims.nyu.edu &   &   &  &  & 0 \\
 \hline
-cuda5.cims.nyu.edu & 4.380782 s   & 5.258230 s& 5.609958 GB/s & 6.231754 GB/s  & 0 \\
+cuda5.cims.nyu.edu & 4.380782 s   & 5.258230 s& 7.479944GB/s & 6.231754 GB/s  & 0 \\
  \hline
 \end{tabular} \\\\\\
 \newpage
