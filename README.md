@@ -3,3 +3,4 @@ Steps for runnning:
 - make 
 - ./matrix-vec 
 - ./2D-jac
+- ./matrix-vec-2
